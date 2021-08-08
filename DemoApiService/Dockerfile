@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["DemoApiService/DemoApiService/DemoApiService.csproj", "DemoApiService/"]
-RUN dotnet restore "DemoApiService/DemoApiService/DemoApiService.csproj"
+COPY ["DemoApiService.csproj", "DemoApiService/"]
+RUN dotnet restore "DemoApiService.csproj"
 COPY . .
 WORKDIR "/src/DemoApiService"
 RUN dotnet build "DemoApiService.csproj" -c Release -o /app/build
